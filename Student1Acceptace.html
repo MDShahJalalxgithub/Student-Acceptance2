@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foreign Student Acceptance Data Visualization</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 60px;
+        }
+        .chart-container {
+            margin: 40px 0;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .navbar {
+            background-color: #343a40;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            color: #d1e7ff;
+        }
+        h1, h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#">Foreign Student Acceptance Data Visualization</a>
+    </nav>
+    <div class="container">
+        <h1 class="text-center">Foreign Student Acceptance Data Visualization</h1>
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <strong>Note:</strong> This page displays interactive visualizations of foreign student acceptance.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <!-- Acceptance by Country -->
+        <div class="chart-container">
+            <h2>Foreign Student Acceptance by Country</h2>
+            <div id="acceptance-by-country-chart"></div>
+        </div>
+
+        <!-- Acceptance Trends Over Time -->
+        <div class="chart-container">
+            <h2>Acceptance Trends Over Time</h2>
+            <div id="acceptance-trends-chart"></div>
+        </div>
+
+        <!-- Acceptance by Field of Study -->
+        <div class="chart-container">
+            <h2>Acceptance by Field of Study</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="field-of-study-chart"></div>
+                </div>
+                <div class="col-md-6">
+                    <div id="total-acceptance-chart"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scatter Plot -->
+        <div class="chart-container">
+            <h2>Acceptance Distribution Scatter Plot</h2>
+            <div id="acceptance-scatter-chart"></div>
+        </div>
+    </div>
+
+    <script>
+        // Acceptance by Country Chart with Mixed Colors
+        var data1 = [
+            {
+                x: ['USA', 'UK', 'Canada', 'Germany'],
+                y: [100000, 80000, 50000, 60000],
+                type: 'bar',
+                marker: {color: ['#007bff', '#28a745', '#dc3545', '#ffc107']}
+            }
+        ];
+
+        Plotly.newPlot('acceptance-by-country-chart', data1);
+
+        // Acceptance Trends Over Time Chart
+        var data2 = [
+            {
+                x: ['2021', '2022', '2023', '2024'],
+                y: [90000, 95000, 97000, 100000],
+                type: 'scatter',
+                line: {color: '#ffc107'}
+            }
+        ];
+
+        Plotly.newPlot('acceptance-trends-chart', data2);
+
+        // Acceptance by Field of Study
+        var data3 = [{
+            values: [35, 25, 20, 20],
+            labels: ['STEM', 'Arts', 'Business', 'Humanities'],
+            type: 'pie',
+            marker: {colors: ['#007bff', '#28a745', '#dc3545', '#ffc107']}
+        }];
+
+        Plotly.newPlot('field-of-study-chart', data3);
+
+        // Total Acceptance with Mixed Colors
+        var data4 = [
+            {
+                x: ['2021', '2022', '2023', '2024'],
+                y: [200000, 210000, 220000, 230000],
+                type: 'bar',
+                marker: {color: ['#007bff', '#28a745', '#dc3545', '#ffc107']}
+            }
+        ];
+
+        Plotly.newPlot('total-acceptance-chart', data4);
+
+        // Scatter Plot for Acceptance Distribution
+        var data5 = [{
+            x: ['USA', 'UK', 'Canada', 'Germany'],
+            y: [100, 95, 80, 70],
+            mode: 'markers',
+            marker: {
+                size: [40, 30, 20, 50],
+                color: ['#007bff', '#28a745', '#dc3545', '#ffc107']
+            }
+        }];
+
+        var layoutScatter = {
+            xaxis: {title: 'Country'},
+            yaxis: {title: 'Acceptance Level'},
+            showlegend: false
+        };
+
+        Plotly.newPlot('acceptance-scatter-chart', data5, layoutScatter);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
